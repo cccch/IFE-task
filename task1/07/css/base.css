@@ -1,0 +1,379 @@
+/*初始化*/
+body,div,p,h1,h2,h3,h4,h5,h6,a,span,ul,li{
+    margin: 0;
+    padding: 0;
+}
+ul,ol {
+    list-style: none;
+}
+a,i,s{
+    text-decoration: none;
+}
+html,body {
+    width: 100%;
+}
+input {
+    outline: none;
+}
+button {
+    outline: none;
+}
+.clearfix::after,.clearfix::before {
+    content: '';
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.content {
+    min-width: 1280px;
+}
+
+/*导航部分*/
+.nav {
+    height: 60px;
+}
+.nav-left {
+    margin: 12px 0 0 40px;
+    height: 40px;
+    float: left;
+
+}
+.nav-left  img {
+    vertical-align: bottom;
+}
+.nav-left  span {
+    /*height: 100%;*/
+    margin-left: 5px;
+    font: 700 20px '黑体';
+    margin-top: 20px;
+
+}
+.nav-right {
+    float: right;
+    margin-right: 20px;
+}
+.nav-right ul li {
+    float: left;
+    padding: 5px 10px;
+}
+.nav-right ul a {
+    float: left;
+    color: #E74F4D;
+    font: 400 16px/50px 'microsoft yahei';
+}
+
+
+/*banner部分*/
+.banner {
+    height: 851px;
+    width: 100%;
+    background: url('../img/01.jpg') no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.banner-text {
+    position: absolute;
+    top: 42%;
+    left: 20%;
+}
+.banner-text p:nth-child(1){
+    font: 900 50px 'microsoft yahei';
+    color: #fff;
+}
+.banner-text p:nth-child(2){
+    font: 400 25px 'microsoft yahei';
+    color: #fff;
+    width: 400px;
+
+}
+.banner-button {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    width: 330px;
+    height: 65px;
+    background-color: #E74F4D;
+    text-align: center;
+    font: 600 30px/65px 'microsoft yahei';
+    color: #fff;
+
+}
+/*logo部分*/
+.logo {
+    width: 100%;
+}
+.logo ul {
+    min-width: 1280px;
+    width: 100%;
+}
+.logo ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 50px 0;
+}
+.logo ul li p {
+    color: #aaa;
+    width: 200px;
+    margin: 30px auto 0;
+}
+
+.banner2 {
+    min-width: 1280px;
+    height: 300px;
+    background-color: #EDECEC;
+    text-align: center;
+    border: 1px solid #EDECEC;
+}
+.banner2 img{
+    width: 100px;
+    display: block;
+    margin: 60px auto;
+}
+.banner2 p {
+    color: #aaa;
+    font: 700 40px 'microsoft yahei';
+    margin: 20px auto;
+}
+/*map部分*/
+.map {
+    height: 340px;
+    min-width: 1280px;
+    background: url("../img/map1.jpg") no-repeat;
+    background-size: cover;
+}
+.map select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    position: relative;
+    
+}
+.map>div {
+    position: relative;
+    width: 220px;
+    height: 30px;
+    float: left;
+    margin-top: 200px ;
+    margin-left: 6%;
+}
+.map div div{
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+.map input {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 200px 0 0 100px;
+    background-color: rgb(190, 78, 72);
+    border: none;
+
+}
+/*photo部分*/
+.photo {
+    height: 600px;
+    background-color: #ccc;
+    width: 100%;
+    min-width: 1280px;
+    text-align: center;
+
+}
+
+.photo-w {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    background-color: #ccc;
+
+}
+.photobig {
+    float:left;
+    margin-left: 20px;
+
+}
+.photo img {
+    border: 5px solid #fff;
+}
+.photobig1 p:nth-child(2){
+    font: 800 25px 'microsoft yahei';
+}
+.photobig1 p:nth-child(3){
+     font: 400 20px 'microsoft yahei';
+ }
+.photobig2 p:nth-child(1){
+    font: 800 25px 'microsoft yahei';
+}
+.photobig2 p:nth-child(2){
+    font: 400 20px 'microsoft yahei';
+}
+.banner3 {
+    height: 565px;
+    min-width: 1280px;
+    overflow: hidden;
+}
+.banner3-left {
+    background: url('../img/five.jpg') no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+    float: left;
+}
+.banner3-left p:nth-child(1) {
+    margin-top: 100px;
+    color: #fff;
+    font: 700 60px 'microsoft yahei';
+}
+.banner3-left p:nth-child(2) {
+    color: #fff;
+    font: 900 90px 'microsoft yahei';
+}
+.banner3-left p:nth-child(3) {
+    color: #fff;
+    font: 500 30px 'microsoft yahei';
+}
+.banner3-left p:nth-child(4) {
+    color: #fff;
+    font: 500 30px 'microsoft yahei';
+}
+.banner3-right {
+    text-align: center;
+    padding-left:  60%;;
+}
+.banner3-right p {
+    font: 600 40px 'microsoft yahei';
+    margin-top: 20%;
+}
+.banner3-right p  span{
+    font: 600 40px 'microsoft yahei';
+    color: red;
+}
+.banner3-right>span{
+    font: 400 20px 'microsoft yahei';
+    color: #ccc;
+    margin-top: 30px;
+    display: block;
+}
+.banner3-right input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: 1px solid #E98487;
+    display: block;
+    width: 100px;
+    height: 50px;
+    background-color: #E98487;
+    color: #fff;
+    margin: 30px auto;
+
+}
+.banner3-right ul {
+    width: 150px;
+    margin: 0 auto;
+}
+.banner3-right ul li {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 30px;
+}
+.banner3-right ul li:nth-child(1) {
+    background-color: #CCC;
+}
+/*banner4部分*/
+.banner4 {
+    width: 100%;
+    text-align: center;
+}
+.banner4 div{
+    width: 33.3%;
+    height: 514px;
+    float: left;
+}
+.banner4-left {
+     background-color: rgb(231,79,77);
+ }
+.banner4-center {
+    background-color: #fff;
+}
+.banner4-right {
+    background: url('../img/huoche.jpg') no-repeat;
+    background-size: cover;
+}
+.banner4-left input,.banner4-center input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: 1px solid #fff;
+    display: block;
+    width: 100px;
+    height: 50px;
+    background-color: #E98487;
+    color: #fff;
+    margin: 60px auto;
+    cursor: pointer;
+}
+.banner4-left p{
+     font: 500 30px 'microsoft yahei';
+    color: #fff;
+
+ }
+.banner4-left p:nth-child(1),.banner4-center p:nth-child(1) {
+    margin-top: 40%;
+
+}
+.banner4-center p {
+    font: 500 30px 'microsoft yahei';
+    color: rgb(231,79,77);
+
+}
+/*表单部分*/
+.form {
+    height: 650px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 80px;
+    background-color: #ddd;
+}
+.form-left {
+    float: left;
+    width: 40%;
+}
+.form-right {
+    float: right;
+    width: 60%;
+
+}
+.form-right input{
+    width: 40%;
+    height: 20px;
+    margin-top: 50px;
+}
+.form-right textarea{
+    width: 70%;
+    outline: none;
+    margin-top: 50px;
+}

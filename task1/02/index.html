@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title>零基础HTML编码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        body {
+            background-color: #ccc;
+        }
+        .nav {
+            background-color: #333333;
+            position: relative;
+        }
+        .nav h1 {
+            color: #fff;
+        }
+        .nav ul{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+        .nav ul li {
+            float: left;
+            height: 100%;
+            text-align: center;
+            font-size: 15px;
+            line-height: 55px;
+        }
+        .nav ul li a{
+            color: #fff;
+        }
+        article {
+            background-color: #fff;
+            margin: 30px;
+        }
+        .article-1 h2 {
+            margin-left: 30px;
+        }
+        .article-1 h3 {
+            margin:20px 0 0 30px;
+        }
+        .article-1 section {
+            padding: 30px;
+        }
+        .article-1 section img{
+            /*float: left;*/
+        }
+        .section-img {
+            background-color: #fff;
+            overflow: hidden;
+            padding: 30px;
+            margin: 30px;
+        }
+        .section-img div {
+            float: left;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 30px;
+        }
+        .section-img img{
+            width: 80px;
+        }
+        .list{
+            margin: 30px;
+            background-color: #fff;
+            padding: 30px;
+        }
+        .zhuce{
+            margin: 30px;
+            background-color: #fff;
+            padding: 30px 30px 30px 30%;
+
+        }
+        .table {
+            width: 100%;
+        }
+        .zhuce label {
+            margin: 10px 0;
+            display: block;
+        }
+        footer{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--导航部分-->
+<nav class="nav">
+    <h1>海爷爷<img src = "img/head.jpg" alt = "头像" width="50px"/></h1>
+    <ul>
+        <li><a href = "javascript:">导航链接1</a></li>
+        <li><a href = "javascript:">导航链接2</a></li>
+        <li><a href = "javascript:">导航链接3</a></li>
+        <li><a href = "javascript:">导航链接4</a></li>
+    </ul>
+</nav>
+<!--文章部分-->
+<article class="article-1">
+    <h2>文章一级标题</h2>
+    <h3>文章二级标题</h3>
+    <section>
+        <p><span>文章作者</span>文章发表时间<span></span></p>
+        <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            <a href = "javascript:">这是一个链接</a>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，
+            <img src = "img/01.jpg" alt = "" style="width:200px"/>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            <a href = "javascript:">这是一个链接</a>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，
+        </p>
+    </section>
+</article>
+<article class="article-1">
+    <h2>另一个文章二级标题</h2>
+    <section>
+        <p><span>文章作者</span>文章发表时间<span></span></p>
+        <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            <a href = "javascript:">这是一个链接</a>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，
+            <img src = "img/01.jpg" alt = "" style="width:200px"/>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+            <a href = "javascript:">这是一个链接</a>
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落,
+            这是一个很长的段落，这是一个很长的段落，
+        </p>
+    </section>
+    <section>
+        <ul>
+            <li>列表项目1</li>
+            <li>列表项目2</li>
+            <li>列表项目3</li>
+            <li>列表项目4</li>
+        </ul>
+    </section>
+</article>
+<!--图片部分-->
+<section class="section-img">
+    <h3>图片</h3>
+    <div><h4>这是一只猫</h4>
+        <img src = "img/01.jpg" alt = ""/></div>
+    <div><h4>这是一只猫</h4>
+        <img src = "img/01.jpg" alt = ""/></div>
+    <div><h4>这是一只猫</h4>
+        <img src = "img/01.jpg" alt = ""/></div>
+    <div><h4>这是一只猫</h4>
+        <img src = "img/01.jpg" alt = ""/></div>
+    <div><h4>这是一只猫</h4>
+        <img src = "img/01.jpg" alt = ""/></div>
+</section>
+
+
+<!--列表和表格-->
+<div class="list">
+    <h2>另一篇文章一级标题</h2>
+    <h3>文章二级标题</h3>
+
+    <ol>
+        <li>排名1</li>
+        <li>排名2</li>
+        <li>排名3</li>
+    </ol>
+    <span>下面是一个表格</span>
+    <section>
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>金额</th>
+                    <th>动作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>prize</td>
+                    <td>100</td>
+                    <td><a href = "javascript:">操作</a></td>
+                </tr>
+                <tr>
+                    <td>prize</td>
+                    <td>300</td>
+                    <td><a href = "javascript:">操作</a></td>
+                </tr>
+                <tr>
+                    <td>prize</td>
+                    <td>200</td>
+                    <td><a href = "javascript:">操作</a></td>
+                </tr>
+                <tr>
+                    <td>合计</td>
+                    <td colspan="2">600</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<!--表单-->
+<div class="zhuce">
+    <h3>注册窗口</h3>
+
+    <form action = "javascript:">
+        <label>请输入邮箱地址:</label><input type = "text"/><br/>
+        <label>请输入密码:</label><input type = "text"/><br/>
+        <label>请在次输入密码:</label><input type = "text"/><br/>
+        <label>性别:</label><input type = "radio" value="" name="sex"/>男<input type = "radio" value="" name="sex"/>女<br/>
+        <label>城市
+            <select name = "city" id = "">
+                <option value = "">北京</option>
+                <option value = "">上海</option>
+                <option value = "" selected="selected">天津</option>
+                <option value = "">杭州</option>
+                <option value = "">南京</option>
+            </select><br/>
+        </label>
+        <label>爱好</label>
+        <input type = "checkbox" name="sports"/>篮球<input type = "checkbox" name="sports"/>羽毛球<input type = "checkbox" name="sports" />网球
+        <br/>
+        <label>个人描述</label>
+        <textarea  placeholder="请用一句话描述自己"rows="2" cols="20"></textarea><br/>
+            <input type = "button" value="提交"/><br/>
+    </form>
+</div>
+<footer>
+    <span>版权所有By:cch</span>
+</footer>
+</body>
+</html>
