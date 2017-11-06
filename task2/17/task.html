@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>IFE JavaScript Task 01</title>
+    <link rel = "stylesheet" href = "task.css"/>
+</head>
+<body>
+<fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <label>日<input name="gra-time" value="day" type="radio" checked="checked"></label>
+    <label>周<input name="gra-time" value="week" type="radio"></label>
+    <label>月<input name="gra-time" value="month" type="radio"></label>
+</fieldset>
+
+<fieldset>
+    <legend>请选择查看的城市：</legend>
+    <select id="city-select">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+        <option value="成都">成都</option>
+        <option value="西安">西安</option>
+        <option value="福州">福州</option>
+        <option value="厦门">厦门</option>
+        <option value="沈阳">沈阳</option>
+    </select>
+</fieldset>
+
+<div class="chart">
+    <ul id="ul">
+
+    </ul>
+</div>
+</body>
+</html>
+<script src="js/task.js"></script>
+
+<!--ceshi-->
+<script>
+//    var radio = document.querySelectorAll('#form-gra-time input');
+//    console.log(radio[1].checked);
+
+//    var select = document.getElementById('city-select');
+//select.addEventListener('change',function(){
+//    console.log(select.value);
+//})
+
+</script>

@@ -1,0 +1,28 @@
+/*indexcss*/
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,ol{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/*basecss*/
+
+.chart {
+    height: 500px;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    margin: 100px;
+    position: relative;
+}
+.chart ul li {
+    position: absolute;
+    bottom: 0;
+    /*float: left;*/
+    width: 10px;
+    margin-left: 10px;
+    border: 1px solid #000;
+}
