@@ -52,38 +52,98 @@ var pageState = {
 }
 
 /**
- * 渲染图表
+ * 渲染图表(day)
  */
-function renderChart(city) {
+function dayChart(city) {
     var ul = document.getElementById('ul');
     ul.innerHTML = '';
     var i = 0;
-
-    //for(var i=0;i<30;i++){
-    //    i1 = i+1;
-    //    var li = document.createElement('li');
-    //    li.style.height = aqiSourceData["北京"]["2016-01-"+(i1<10?'0'+i1:i1)]+"px";
-    //    li.style.left = i*20+'px';
-    //    ul.appendChild(li);
-    //}
     for(var k in aqiSourceData[city]){
         var li = document.createElement('li');
         li.style.height = aqiSourceData[city][k] + 'px';
         li.style.left = i*18+'px';
         i++;
         ul.appendChild(li);
+        //for(var i=0;i<30;i++){
+        //    i1 = i+1;
+        //    var li = document.createElement('li');
+        //    li.style.height = aqiSourceData["北京"]["2016-01-"+(i1<10?'0'+i1:i1)]+"px";
+        //    li.style.left = i*20+'px';
+        //    ul.appendChild(li);
+        //}
     }
 }
-/**
- * 日、周、月的radio事件点击时的处理函数
- */
-function graTimeChange() {
-    // 确定是否选项发生了变化
-
-    // 设置对应数据
-
-    // 调用图表渲染函数
+//渲染图表(week)
+function weekchart(city){
+    var ul = document.getElementById('ul');
+    ul.innerHTML = '';
+    var i = 0;
+    var avg = 0;
+    var j = 0;
+    for(var k in aqiSourceData[city]){
+        avg += aqiSourceData[city][k]
+        if(j%7==0&&j!=0){
+            var li = document.createElement('li');
+            li.style.height = Math.ceil(avg/7) + 'px';
+            li.style.left = i*30+'px';
+            i++;
+            ul.appendChild(li);
+            avg = 0;
+        }
+        j++
+    }
 }
+
+
+
+
+//渲染图表(month)
+function monthchart(city){
+    var ul = document.getElementById('ul');
+    ul.innerHTML = '';
+    var i = 0;
+    var avg = 0;
+    var j = 0;
+    for(var k in aqiSourceData[city]){
+        avg += aqiSourceData[city][k]
+        if(j%30==0&&j!=0){
+            var li = document.createElement('li');
+            li.style.height = Math.ceil(avg/30) + 'px';
+            li.style.left = i*60+'px';
+            i++;
+            ul.appendChild(li);
+            avg = 0;
+        }
+        j++
+    }
+}
+
+/**
+ * 日、周、月的radio事件点击时的事件注册函数
+ */
+function graTimeChange(){
+    // 确定是否选项发生了变化
+    // 设置对应数据
+    // 调用图表渲染函数
+    var radio = document.querySelectorAll('#form-gra-time input');
+    for(var i=0;i<radio.length;i++){
+        radio[i].addEventListener('change',function(){
+            var select = document.getElementById('city-select');
+            var city = select.value;
+            if(this.value == 'day'){
+                dayChart(city)
+            }
+            if(this.value == 'week'){
+                weekchart(city)
+            }
+            if(this.value == 'month'){
+                monthchart(city)
+            }
+
+        })
+    }}
+
+
 
 /**
  * select发生变化时的处理函数
@@ -91,18 +151,27 @@ function graTimeChange() {
 function citySelectChange() {
     // 确定是否选项发生了变化
     var select = document.getElementById('city-select');
+    var radio = document.querySelectorAll('#form-gra-time input');
     // 设置对应数据
 
     // 调用图表渲染函数
     select.addEventListener('change',function(){
     for(var k in aqiSourceData){
         if(this.value == k){
-            renderChart(k);
+            if(radio[0].checked){
+                dayChart(k)
+            }
+            if(radio[1].checked){
+                weekchart(k)
+            }
+            if(radio[2].checked){
+                monthchart(k)
+            }
+        }
         }
         //console.log(this.value);
 
-    }
-})
+    })
 }
 citySelectChange();
 
@@ -135,10 +204,12 @@ function initAqiChartData() {
  * 初始化函数
  */
 function init() {
+    graTimeChange()
+    dayChart('北京');
     initGraTimeForm()
     initCitySelector();
     initAqiChartData();
 }
 
 init();
-    console.log(aqiSourceData);
+    console.log(aqiSourceData)
