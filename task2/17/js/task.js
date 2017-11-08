@@ -58,12 +58,29 @@ function dayChart(city) {
     var ul = document.getElementById('ul');
     ul.innerHTML = '';
     var i = 0;
-    for(var k in aqiSourceData[city]){
-        var li = document.createElement('li');
-        li.style.height = aqiSourceData[city][k] + 'px';
-        li.style.left = i*18+'px';
-        i++;
+    for(let k in aqiSourceData[city]){
+        let li = document.createElement('li');
+        //li.style.transition = '0.2s 1s';
+        //li.style.height = aqiSourceData[city][k] + 'px';
+        //li.style.left = i*18+'px';
+        //li.style.width = 10+'px';
+        //li.style.backgroundColor = 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+        //li.title = city+k+':'+aqiSourceData[city][k];
+        //i++;
         ul.appendChild(li);
+        //添加transition必须先添加dom元素并且结束进程，重新渲染
+        setTimeout(function(){
+            li.style.transition = '0.2s 1s';
+            li.style.height = aqiSourceData[city][k] + 'px';
+            li.style.left = i*18+'px';
+            li.style.width = 10+'px';
+            li.style.backgroundColor = 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+            li.title = city+k+':'+aqiSourceData[city][k];
+            i++;
+        },0)
+
+
+
         //for(var i=0;i<30;i++){
         //    i1 = i+1;
         //    var li = document.createElement('li');
@@ -77,17 +94,27 @@ function dayChart(city) {
 function weekchart(city){
     var ul = document.getElementById('ul');
     ul.innerHTML = '';
-    var i = 0;
+    var i = 1;
     var avg = 0;
     var j = 0;
-    for(var k in aqiSourceData[city]){
+    for(let k in aqiSourceData[city]){
         avg += aqiSourceData[city][k]
         if(j%7==0&&j!=0){
-            var li = document.createElement('li');
-            li.style.height = Math.ceil(avg/7) + 'px';
-            li.style.left = i*30+'px';
-            i++;
+            let li = document.createElement('li');
             ul.appendChild(li);
+            //添加transition必须先添加dom元素并且结束进程，重新渲染
+            (function(avg){
+                setTimeout(function(){
+                    console.log(avg);
+
+                    li.style.height = Math.ceil(avg/7) + 'px';
+                    li.style.left = i*120+'px';
+                    li.style.width = 40+'px';
+                    li.style.backgroundColor = 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+                    li.title = city+'第'+i+'周'+':'+Math.ceil(avg/7);
+                    i++;
+                },0)
+            }(avg))
             avg = 0;
         }
         j++
@@ -101,17 +128,26 @@ function weekchart(city){
 function monthchart(city){
     var ul = document.getElementById('ul');
     ul.innerHTML = '';
-    var i = 0;
+    var i = 1;
     var avg = 0;
     var j = 0;
-    for(var k in aqiSourceData[city]){
+    for(let k in aqiSourceData[city]){
         avg += aqiSourceData[city][k]
         if(j%30==0&&j!=0){
-            var li = document.createElement('li');
-            li.style.height = Math.ceil(avg/30) + 'px';
-            li.style.left = i*60+'px';
-            i++;
+            let li = document.createElement('li');
             ul.appendChild(li);
+            //添加transition必须先添加dom元素并且结束进程，重新渲染
+            (function(avg){
+                setTimeout(function(){
+                    li.style.height = Math.ceil(avg/30) + 'px';
+                    li.style.left = i*300+'px';
+                    li.style.width = 80+'px';
+                    li.style.backgroundColor = 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+                    li.title = city+'第'+i+'月'+':'+Math.ceil(avg/30);
+                    i++;
+
+                },0)
+            })(avg)
             avg = 0;
         }
         j++
@@ -173,43 +209,15 @@ function citySelectChange() {
 
     })
 }
-citySelectChange();
 
-/**
- * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
- */
-function initGraTimeForm() {
-
-}
-
-/**
- * 初始化城市Select下拉选择框中的选项
- */
-function initCitySelector() {
-    // 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
-
-    // 给select设置事件，当选项发生变化时调用函数citySelectChange
-
-}
-
-/**
- * 初始化图表需要的数据格式
- */
-function initAqiChartData() {
-    // 将原始的源数据处理成图表需要的数据格式
-    // 处理好的数据存到 chartData 中
-}
 
 /**
  * 初始化函数
  */
 function init() {
     graTimeChange()
+    citySelectChange();
     dayChart('北京');
-    initGraTimeForm()
-    initCitySelector();
-    initAqiChartData();
 }
 
 init();
-    console.log(aqiSourceData)
