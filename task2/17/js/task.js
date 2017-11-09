@@ -106,7 +106,6 @@ function weekchart(city){
             (function(avg){
                 setTimeout(function(){
                     console.log(avg);
-
                     li.style.height = Math.ceil(avg/7) + 'px';
                     li.style.left = i*120+'px';
                     li.style.width = 40+'px';
