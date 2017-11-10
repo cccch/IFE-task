@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title></title>
+    <style>
+        ul {
+                list-style: none;
+        }
+        ul li {
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            color: #fff;
+            font: 700 25px/50px 'microsoft yahei';
+            text-align: center;
+            margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<input type = "text" id="input"/>
+<input type = "button" value="左侧入" id="btn1"/>
+<input type = "button" value="右侧入" id="btn2"/>
+<input type = "button" value="左侧出" id="btn3"/>
+<input type = "button" value="右侧出" id="btn4"/>
+<ul id="ul">
+    <li id="li1">10</li>
+    <li>3</li>
+    <li>7</li>
+    <li>11</li>
+    <li>12</li>
+    <li>30</li>
+</ul>
+</body>
+</html>
+<script>
+    function remove(){
+        var ul = document.getElementById('ul');
+        var lis = ul.getElementsByTagName('li');
+        for(var i=0;i<lis.length;i++){
+            lis[i].onclick = function(){
+                ul.removeChild(this);
+            }
+        }
+    }
+    (function(){
+        var ul = document.getElementById('ul');
+        var input = document.getElementById('input');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+        var btn4 = document.getElementById('btn4');
+
+        btn1.addEventListener('click',function(){
+            var value = input.value;
+            var li = document.createElement('li');
+            li.innerHTML = value;
+            ul.insertBefore(li,ul.firstElementChild);
+            li.onclick = function(){
+                ul.removeChild(this);
+            }
+        })
+        btn2.addEventListener('click',function(){
+            var value = input.value;
+            var li = document.createElement('li');
+            li.innerHTML = value;
+            ul.appendChild(li);
+            li.onclick = function(){
+                ul.removeChild(this);
+            }
+        })
+        btn3.addEventListener('click',function(){
+            var li = document.createElement('li');
+            if(ul.firstElementChild){
+                alert(ul.firstElementChild.innerHTML);
+                ul.removeChild(ul.firstElementChild);
+
+            }
+        })
+        btn4.addEventListener('click',function(){
+            var li = document.createElement('li');
+            if(ul.lastElementChild){
+                alert(ul.lastElementChild.innerHTML);
+                ul.removeChild(ul.lastElementChild);
+            }
+        })
+        remove();
+
+    }())
+</script>
