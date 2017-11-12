@@ -17,21 +17,24 @@
 </body>
 </html>
 <script>
-    var text1 = document.getElementById('text1');
-    var input = document.getElementById('input');
-    var btn = document.getElementById('btn');
-    var div1 = document.getElementById('div1');
-    btn.onclick = function(){
-        div1.innerHTML = '';
+    (function(){
+        var text1 = document.getElementById('text1');
+        var input = document.getElementById('input');
+        var btn = document.getElementById('btn');
+        var div1 = document.getElementById('div1');
+        btn.onclick = function(){
+            div1.innerHTML = '';
 
-        var arr = text1.value.split(/\,|\s/);
-        var reg = new RegExp(input.value,'g');
-        var result = '';
-        for(var i=0;i<arr.length;i++){
-            if(reg.test(arr[i])){
-                result = arr[i].replace(reg,'<span>'+arr[i].match(reg)[0]+'</span>');
-                div1.innerHTML += '<div>'+result+'</div>';
+            var arr = text1.value.split(/\,|\s/);
+            var reg = new RegExp(input.value,'g');
+            var result = '';
+            for(var i=0;i<arr.length;i++){
+                if(reg.test(arr[i])){
+                    result = arr[i].replace(reg,'<span>'+arr[i].match(reg)[0]+'</span>');
+                    div1.innerHTML += '<div>'+result+'</div>';
+                }
             }
         }
-    }
+    }())
+
 </script>

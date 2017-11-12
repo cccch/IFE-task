@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: royalblue;
+            text-align: center;
+            font: 500 30px/100px 'microsoft yahei';
+            color: #fff;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #ip {
+            outline: none;
+            border: 1px solid royalblue;
+            width: 200px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 30px;
+            font: 400 18px/30px 'microsoft yahei';
+            
+        }
+    </style>
+</head>
+<body>
+<label>tag:</label><input type = "text" id="ip"/>
+<input type = "button" value="确认" id="btn"/>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>
+<script>
+    //数字数组去重（结果乱序）
+    function unique1(arr){
+        var order = [];
+        arr.sort(function(a,b){return b-a})
+        for(var i=0;i<arr.length;i++){
+            if(arr[i+1]&&arr[i]!=arr[i+1]){
+                order.push(arr[i])
+            }
+        }
+        order.push(arr[arr.length-1]);
+    }
+
+//数组去重函数
+    function unique2(arr){
+        var order = [];
+        order.push(arr[0]);
+        for(var i=0;i<arr.length;i++){
+            for(var k=0;k<order.length;k++){
+                if(arr[i]==order[k]){
+                    break;
+                }
+                if(k == order.length-1){
+                    order.push(arr[i]);
+                }
+            }
+        }
+        return order;
+
+    }
+    //注册删除函数
+    function remove(ul){
+        var lis = ul.children;
+        for(var i=0;i<lis.length;i++){
+            lis[i].onclick = function(){
+                ul.removeChild(this);
+            }
+        }
+    }
+    (function(){
+        var ip = document.getElementById('ip');
+        var ul = document.getElementById('ul');
+        var btn = document.getElementById('btn');
+        var arr = [];
+        ip.onfocus = function(){
+            this.style.border = '1px solid blueviolet'
+        }
+        ip.onblur = function(){
+            this.style.border = '1px solid royalblue'
+        }
+        btn.onclick = function(){
+            var value = ip.value.replace(/^\s+|\s+$/g,'')
+            value? arr = value.split(/\s+|\,/):'';
+                for(var i=0;i<arr.length;i++){
+                    for(var k= 0,length = ul.children.length||1;k<length;k++){
+                        if(ul.children[k]&&arr[i] == ul.children[k].innerHTML){
+                            break;
+                        }
+                        else if(k == length-1){
+                            if(length>9){
+                                ul.removeChild(ul.firstElementChild);
+                            }
+                            ul.innerHTML += '<li>'+arr[i]+'</li>';
+                        }
+                    }
+                }
+            remove(ul)
+        }
+        remove(ul)
+
+    })()
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title></title>
+    <style>
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+        width: 200px;
+        height: 30px;
+        font: 400 18px/30px 'microsoft yahei';
+        padding-left: 10px;
+        color: #E74F4D;
+    }
+        select:focus {
+            border: 1px solid #E74F4D;
+        }
+        select option:hover {
+            background-color: #E74F4D;
+        }
+
+
+        .sel {
+            width: 200px;
+            height: 40px;
+            font: 400 20px/40px 'microsoft yahei';
+            /*padding-left: 10px;*/
+            border: 1px solid #E74F4D;
+            cursor: pointer;
+            outline: none;
+        }
+        .sel div {
+            /*background-color: #ccc;*/
+        }
+        .sel div:hover {
+            background-color: #E74F4D;
+        }
+    </style>
+</head>
+<body>
+<!--<select name = "" id = "">-->
+    <!--<option value = "">北京</option>-->
+    <!--<option value = "">上海</option>-->
+    <!--<option value = "">广州</option>-->
+<!--</select>-->
+
+<button class="sel" id="sel">
+    <div >北京</div>
+    <div >上海</div>
+    <div >广州</div>
+</button>
+</body>
+</html>
+<script>
+    var sel = document.getElementById('sel');
+    var divs = sel.children;
+    var k = 0;
+    for(var i=1;i<sel.children.length;i++){
+        sel.children[i].style.display = 'none';
+    }
+    sel.onclick = function(){
+        if(k == 0){
+            for(var i=1;i<sel.children.length;i++){
+                sel.children[i].style.display = 'block';
+            }
+            k++;
+        }
+        else {
+            for(var i=1;i<sel.children.length;i++){
+                sel.children[i].style.display = 'none';
+            }
+            k=0;
+        }
+
+    }
+</script>
