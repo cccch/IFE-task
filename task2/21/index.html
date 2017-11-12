@@ -18,7 +18,7 @@
             border-radius: 50%;
             background-color: royalblue;
             text-align: center;
-            font: 500 30px/100px 'microsoft yahei';
+            font: 500 18px/100px 'microsoft yahei';
             color: #fff;
             margin: 20px;
             cursor: pointer;
@@ -32,6 +32,7 @@
             box-sizing: border-box;
             height: 30px;
             font: 400 18px/30px 'microsoft yahei';
+
             
         }
     </style>
@@ -83,6 +84,14 @@
             lis[i].onclick = function(){
                 ul.removeChild(this);
             }
+            lis[i].onmouseover = function(){
+                this.innerHTML = '删除:'+this.innerHTML;
+                this.style.backgroundColor = 'greenyellow';
+            }
+            lis[i].onmouseout = function(){
+                this.innerHTML = this.innerHTML.replace(/删除:/,'');
+                this.style.backgroundColor = 'royalblue';
+            }
         }
     }
     (function(){
@@ -114,6 +123,7 @@
                 }
             remove(ul)
         }
+
         remove(ul)
 
     })()
