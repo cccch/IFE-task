@@ -3,8 +3,176 @@
 <head lang = "en">
     <meta charset = "UTF-8">
     <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .root {
+            width: 1000px;
+            height: 600px;
+            display: flex;
+            border: 1px solid pink;
+            margin: 0 auto;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+
+        }
+        .child1 {
+            width: 450px;
+            height: 500px;
+            border: 1px solid #561385;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+        }
+        .child2 {
+            width: 200px;
+            height: 400px;
+            border: 1px solid #137853;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+
+        }
+        .child3 {
+            width: 80px;
+            height: 300px;
+            border: 1px solid #798465;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+
+        }
+        .operation {
+            width: 300px;
+            /*display: inline-block;*/
+            margin: 30px auto;
+        }
+        .operation input {
+            width: 50px;
+            height: 30px;
+            font: 400 20px/30px 'microsoft yahei';
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
+<div class="root">
+    <div class = "child1">
+        <div class = "child2">
+            <div class = "child3"></div>
+            <div class = "child3"></div>
+        </div>
+        <div class = "child2">
+            <div class = "child3"></div>
+            <div class = "child3"></div>
+        </div>
+    </div>
+    <div class = "child1">
+        <div class = "child2">
+            <div class = "child3"></div>
+            <div class = "child3"></div>
+        </div>
+        <div class = "child2">
+            <div class = "child3"></div>
+            <div class = "child3"></div>
+        </div>
+    </div>
+</div>
 
+<div class="operation">
+        <input type = "button" value="前"/>
+        <input type = "button" value="中"/>
+        <input type = "button" value="后"/>
+    </div>
 </body>
 </html>
+<script>
+
+    (function(){
+        //前序遍历
+        function preorder(node){
+            if(!(node==null)){
+                arr.push(node);
+                preorder(node.firstElementChild);
+                preorder(node.lastElementChild);
+            }
+        }
+        //中序遍历
+        function middleorder(node){
+            if(!(node==null)){
+                middleorder(node.firstElementChild);
+                arr.push(node);
+                middleorder(node.lastElementChild);
+            }
+        }
+        //后序遍历
+        function lastorder(node){
+            if(!(node==null)){
+                lastorder(node.firstElementChild);
+                lastorder(node.lastElementChild);
+                arr.push(node);
+
+            }
+        }
+        //变色函数
+        function changeColor(arr){
+            clearInterval(timer);
+            var i=1;
+            arr[0].style.backgroundColor = '#abcdef';
+            timer = setInterval(function(){
+                if(i<arr.length){
+                    for(var j=0;j<arr.length;j++){
+                        arr[j].style.backgroundColor = '#ffffff';
+                    }
+                    arr[i].style.backgroundColor = '#abcdef';
+                    i++;
+                }
+                else {
+                    clearInterval(timer);
+                    arr[arr.length-1].style.backgroundColor = '#ffffff';
+                }
+
+            },500)
+
+        }
+
+
+        var root = document.getElementsByClassName('root')[0];
+        var inputs = document.getElementsByTagName('input');
+        var arr = [];
+        var timer = null;
+        inputs[0].onclick = function(){
+            for(var j=0;j<arr.length;j++){
+                arr[j].style.backgroundColor = '#ffffff';
+            }
+            arr = []
+            preorder(root)
+            changeColor(arr);
+        }
+        inputs[1].onclick = function(){
+            for(var j=0;j<arr.length;j++){
+                arr[j].style.backgroundColor = '#ffffff';
+            }
+            arr = []
+            middleorder(root)
+            changeColor(arr);
+
+        }
+        inputs[2].onclick = function(){
+            for(var j=0;j<arr.length;j++){
+                arr[j].style.backgroundColor = '#ffffff';
+            }
+            arr = [];
+            lastorder(root)
+            changeColor(arr);
+
+        }
+
+    })()
+</script>
