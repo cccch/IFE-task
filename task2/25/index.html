@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .operation {
+            width: 60%;
+            margin: 20px auto;
+        }
+        .current {
+            /*text-shadow: 5px 5px 5px #ccc;*/
+        }
+        .subject {
+            width: 70%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            text-shadow: 0;
+
+
+        }
+        .subject>div {
+            margin-left: 50px;
+            text-shadow: none;
+
+
+
+        }
+        .subject>div>div {
+            margin-left: 50px;
+            text-shadow: none;
+
+
+
+        }
+    </style>
+</head>
+<body>
+<div class="operation">
+    <input type = "text"/>
+    <input type = "button" value="深度优先搜索"/>
+    <input type = "button" value="广度优先搜索"/>
+    <input type = "button" value="清除"/>
+</div>
+<div class="subject"><span>科目</span>
+    <div><span>数学</span>
+        <div><span>高数</span></div>
+        <div><span>线代</span></div>
+        <div><span>概率论</span></div>
+    </div>
+    <div><span>语文</span>
+        <div><span>李白</span></div>
+        <div><span>王维</span></div>
+        <div><span>杜甫</span></div>
+    </div>
+    <div><span>物理</span>
+        <div><span>爱因斯坦</span></div>
+        <div><span>爱迪生</span></div>
+        <div><span>霍金</span></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var subject = document.getElementsByClassName('subject')[0];
+    var spans = document.querySelectorAll('.subject span');
+    var input = document.getElementsByTagName('input');
+    var arr = [];
+    var timer = null;
+    //给予所有div mouseover事件
+    function hover(){
+        for(var i=0;i<spans.length;i++){
+            spans[i].onmouseover = function(e){
+                var e = event||window.event;
+                e.cancelBubble = true || e.stopPropagation();
+                this.style.textShadow = '5px 5px 5px #999999';
+            }
+            spans[i].onmouseleave = function(e){
+                var e = event||window.event;
+                e.cancelBubble = true || e.stopPropagation();
+                this.style.textShadow = 'none';
+            }
+        }
+
+    }
+    //点击事件
+    function click(){
+        for(var i=0;i<spans.length;i++){
+            let status = false;
+            spans[i].onclick = function(){
+                var divs = this.parentNode.getElementsByTagName('div');;
+                if(status == false){
+                    for(var j=0;j<divs.length;j++){
+                        divs[j].style.display = 'none';
+                    }
+                    status = true;
+                }
+                else {
+                    for(var j=0;j<divs.length;j++){
+                        divs[j].style.display = 'block';
+                    }
+                    status = false;
+                }
+
+            }
+        }
+    }
+
+    //深度优先遍历
+    function depth(node){
+        if(!(node==null)){
+            arr.push(node);
+            for(var i=1;i<node.children.length;i++){
+                depth(node.children[i]);
+            }
+        }
+    }
+    //广度优先遍历
+    function breadth(arr1){
+        if(arr.length==0){
+            arr.push(arr1[0])
+        }
+        arr1 = Array.prototype.slice.call(arr1);
+        var result = []
+        for(var i=0;i<arr1.length;i++){
+            if(!(arr1[i]==null)){
+                for(var j=1;j<arr1[i].children.length;j++){
+                    result.push(arr1[i].children[j]);
+                }
+            }
+        }
+        arr = arr.concat(result);
+        if(result.length!=0){
+            breadth(result);
+        }
+    }
+//    depth(subject);
+//    console.log(arr);
+//    breadth(document.getElementsByClassName('subject'));
+//    console.log(arr);
+
+
+    //搜索事件绑定
+    //深度搜索
+    input[1].onclick = function(){
+        var value = input[0].value;
+        clearInterval(timer);
+        arr = [];
+        var i = 1;
+        breadth(document.getElementsByClassName('subject'));
+        for(var j=0;j<arr.length;j++){
+            arr[j].children[0].style.backgroundColor = '#fff';
+        }
+        arr[0].style.display = 'block';
+        arr[0].children[0].style.backgroundColor = '#abcdef';
+        if(value == arr[0].children[0].innerHTML){
+            clearInterval(timer)
+        }
+        timer = setInterval(function(){
+            for(var j=0;j<arr.length;j++){
+                arr[j].children[0].style.backgroundColor = '#fff';
+            }
+            arr[i].style.display = 'block';
+            arr[i].children[0].style.backgroundColor = '#abcdef';
+            if(value == arr[i].children[0].innerHTML){
+                clearInterval(timer)
+            }
+            i++
+            if(i>=arr.length){
+                clearInterval(timer);
+            }
+
+        },200)
+
+    }
+    //广度搜索
+    input[2].onclick = function(){
+        var value = input[0].value;
+        clearInterval(timer);
+        arr = [];
+        var i = 1;
+        depth(subject);
+        for(var j=0;j<arr.length;j++){
+            arr[j].children[0].style.backgroundColor = '#fff';
+        }
+        arr[0].style.display = 'block';
+        arr[0].children[0].style.backgroundColor = '#abcdef';
+        if(value == arr[0].children[0].innerHTML){
+            clearInterval(timer)
+        }
+        timer = setInterval(function(){
+            for(var j=0;j<arr.length;j++){
+                arr[j].children[0].style.backgroundColor = '#fff';
+            }
+            arr[i].style.display = 'block';
+            arr[i].children[0].style.backgroundColor = '#abcdef';
+            if(value == arr[i].children[0].innerHTML){
+                clearInterval(timer)
+            }
+            i++;
+            if(i>=arr.length){
+                clearInterval(timer);
+            }
+        },200)
+    }
+
+    //清除
+    input[3].onclick = function(){
+        input[0].value = '';
+    }
+
+    function init(){
+        hover()
+        click()
+    }
+    init()
+</script>
